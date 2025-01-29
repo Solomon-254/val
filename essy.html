@@ -4,103 +4,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Be My Valentine, Esther 💖</title>
-    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background: url('flowers_background.jpg') no-repeat center center/cover;
-            text-align: center;
-            color: white;
-            margin: 0;
-            padding: 0;
-        }
-        .container {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-        h1 {
-            font-size: 3em;
-            text-shadow: 2px 2px 5px #ff1e00;
-        }
-        p {
-            font-size: 1.5em;
-            margin-bottom: 20px;
-            font-style: italic;
-        }
-        .buttons {
-            display: flex;
-            gap: 20px;
-        }
-        button {
-            padding: 15px 25px;
-            font-size: 1.8em;
-            color: white;
-            background: #e60026;
-            border: none;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: background 0.3s ease, transform 0.2s ease;
-        }
-        button:hover {
-            background: #ff1e00;
-            transform: scale(1.1);
-        }
-        .no-button {
-            position: relative;
-            background: #444;
-        }
-        .no-button:hover {
-            position: absolute;
-            top: calc(50% - 20px);
-            left: calc(50% - 50px);
-            transform: translate(calc(100px - 50%), calc(100px - 50%));
-        }
-        #response {
-            margin-top: 20px;
-            font-size: 2em;
-            font-weight: bold;
-            color: #ffeb3b;
-        }
-        .hearts {
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 4em;
-            animation: floatHearts 3s infinite;
+        .heart-animation {
+            animation: floatHearts 5s infinite;
         }
         @keyframes floatHearts {
             0% { transform: translateY(0) scale(1); }
-            50% { transform: translateY(-10px) scale(1.1); }
+            50% { transform: translateY(-20px) scale(1.2); }
             100% { transform: translateY(0) scale(1); }
+        }
+        .button-hover:active {
+            transform: scale(1.1);
         }
     </style>
 </head>
-<body>
+<body class="bg-cover bg-center text-white font-sans" style="background-image: url('luxurious_red_background.jpg');">
+    <div class="h-screen flex flex-col items-center justify-center space-y-6 relative">
+        <div class="absolute top-10 left-1/2 transform -translate-x-1/2 text-6xl heart-animation">
+            💖💋💞
+        </div>
+
+        <div class="bg-opacity-70 bg-black rounded-xl p-8 shadow-2xl text-center space-y-4">
+            <h1 class="text-5xl font-extrabold text-red-400">Esther, Will You Be My Valentine`s? 💘</h1>
+            <h2 class="text-3xl italic text-red-300">My Heart Beats Just for You. 😘💋</h2>
+            <p class="text-lg text-pink-200">In the soft glow of love, every moment with you feels like a dream I never want to end. 💖</p>
+            
+            <div class="flex justify-center gap-6" id="buttons">
+                <button id="yesButton" class="bg-red-600 hover:bg-red-500 text-white px-6 py-3 text-xl rounded-full shadow-lg transition-all transform hover:scale-110 button-hover">
+                    Yes, Forever! 💘
+                </button>
+                <button class="bg-gray-800 hover:bg-red-700 text-white px-6 py-3 text-xl rounded-full shadow-lg transition-all transform hover:scale-110 button-hover"
+                        onmouseover="moveButton(this)">
+                    No... 😏
+                </button>
+            </div>
+            
+            <div id="response" class="mt-6 text-2xl text-yellow-400 font-bold"></div>
+        </div>
+    </div>
+
     <audio autoplay loop>
-        <source src="residual.mp3" type="audio/mpeg">
+        <source src="sexy_romantic_song.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
-    <div class="container">
-        <div class="hearts">💖💗💞</div>
-        <h1>Esther, Be Mine Forever? 💘</h1>
-        <h1>Esther, Will you be my Valentine`s? 😘🍑🍑</h1>
-        <p>They say love is in the air... but honestly, it’s all in my heart for you. 💕</p>
-        <div class="buttons" id="buttons">
-            <button onclick="showMessage()">Yes, of course! 💘</button>
-            <button class="no-button" onmouseover="moveButton(this)">Nope 😏</button>
-        </div>
-        <div id="response"></div>
-    </div>
-    
+
     <script>
         function showMessage() {
-            document.getElementById("response").innerHTML = "<h2>Yay! Get ready for the most amazing Valentine’s night ever! 💦💦🤰🏽🤰🏽</h2>";
+            document.getElementById("response").innerHTML = "<h2>Yes! Get ready for an unforgettable evening, Esther. 💋💦</h2>";
             document.getElementById("buttons").style.display = "none"; // Hide the buttons
         }
+
         function moveButton(btn) {
             let x = Math.random() * (window.innerWidth - btn.clientWidth);
             let y = Math.random() * (window.innerHeight - btn.clientHeight);
@@ -108,6 +62,9 @@
             btn.style.left = `${x}px`;
             btn.style.top = `${y}px`;
         }
+
+        // Attach event listener for 'Yes' button
+        document.getElementById("yesButton").addEventListener('click', showMessage);
     </script>
 </body>
 </html>
