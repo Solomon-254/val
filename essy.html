@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be My Valentine, Esther 💖</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: url('flowers_background.jpg') no-repeat center center/cover;
+            text-align: center;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        h1 {
+            font-size: 3em;
+            text-shadow: 2px 2px 5px #ff1e00;
+        }
+        p {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        .buttons {
+            display: flex;
+            gap: 20px;
+        }
+        button {
+            padding: 15px 25px;
+            font-size: 1.8em;
+            color: white;
+            background: #e60026;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+        button:hover {
+            background: #ff1e00;
+            transform: scale(1.1);
+        }
+        .no-button {
+            position: relative;
+            background: #444;
+        }
+        .no-button:hover {
+            position: absolute;
+            top: calc(50% - 20px);
+            left: calc(50% - 50px);
+            transform: translate(calc(100px - 50%), calc(100px - 50%));
+        }
+        #response {
+            margin-top: 20px;
+            font-size: 2em;
+            font-weight: bold;
+            color: #ffeb3b;
+        }
+        .hearts {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 4em;
+            animation: floatHearts 3s infinite;
+        }
+        @keyframes floatHearts {
+            0% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-10px) scale(1.1); }
+            100% { transform: translateY(0) scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <audio autoplay loop>
+        <source src="residual.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    <div class="container">
+        <div class="hearts">💖💗💞</div>
+        <h1>Esther, Be Mine Forever? 💘</h1>
+        <h1>Esther, Will you be my Valentine`s? 😘🍑🍑</h1>
+        <p>They say love is in the air... but honestly, it’s all in my heart for you. 💕</p>
+        <div class="buttons" id="buttons">
+            <button onclick="showMessage()">Yes, of course! 💘</button>
+            <button class="no-button" onmouseover="moveButton(this)">Nope 😏</button>
+        </div>
+        <div id="response"></div>
+    </div>
+    
+    <script>
+        function showMessage() {
+            document.getElementById("response").innerHTML = "<h2>Yay! Get ready for the most amazing Valentine’s night ever! 💦💦🤰🏽🤰🏽</h2>";
+            document.getElementById("buttons").style.display = "none"; // Hide the buttons
+        }
+        function moveButton(btn) {
+            let x = Math.random() * (window.innerWidth - btn.clientWidth);
+            let y = Math.random() * (window.innerHeight - btn.clientHeight);
+            btn.style.position = "absolute";
+            btn.style.left = `${x}px`;
+            btn.style.top = `${y}px`;
+        }
+    </script>
+</body>
+</html>
